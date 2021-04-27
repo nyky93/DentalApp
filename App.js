@@ -1,112 +1,69 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import styled from 'styled-components/native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+export default function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <Container>
+       <Group>
+         <GroupTitle> 11 сентября </GroupTitle>
+         <GroupItem>
+          <Avatar source={{ uri: 
+            'https://sun1-23.userapi.com/s/v1/if1/owIVNm4atfdgJzhzrAoucj-x4S0HcWr7FKI7nIZAtNHz3Y2_NSwyxlaZWCpFGY2T7zSZrE-m.jpg?size=100x0&quality=96&crop=821,0,866,866&ava=1'}} 
+          />
+            <View >
+          <FullName>Борис Николай</FullName>
+            <GrayText>пульпит, удаление зуба</GrayText>
+          </View>
+          <GroupDate> 12:30 </GroupDate>
+         </GroupItem>
+       </Group>      
+    </Container>
   );
-};
+}
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+const GroupDate = styled.Text`
+  background: #e9f5ff;
+  border-radius: 18px;
+  font-weight: 600;
+  color: #4294ff;yar
+  
+`;
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const GrayText = styled.Text`
+   font-size: 16px;
+   color: #8B979F; 
+`;
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+const FullName = styled.Text`
+  font-weight: 600;
+  font-size: 16px;
+`;
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const Avatar = styled.Image`
+   border-radius: 50px;
+   width: 40px;
+   height: 40px;
+   margin-right 15px;
+`;
 
-export default App;
+const GroupItem = styled.View`
+   align-items: center;
+   flex-direction: row;
+   padding: 20px 0;
+`;
+
+const GroupTitle = styled.Text`
+   font-weight: 800;
+   font-size: 22px;
+   color: #000000;
+`;
+
+const Group = styled.View`
+   padding: 0 20px;
+`;
+
+const Container = styled.View`
+   flex: 1; 
+   margin-top 50px;
+`;
