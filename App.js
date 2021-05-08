@@ -27,6 +27,7 @@ const Avatar = styled(Image)`
 `;
 
 const GroupItem = styled(View)`
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
   padding: 20px 0;
