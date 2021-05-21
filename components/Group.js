@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styled from 'styled-components/native';
 
 const GroupDate = styled(Text)`
@@ -25,10 +25,10 @@ const FullName = styled(Text)`
 `;
 
 const Avatar = styled(Image)`
-   border-radius: 50px;
-   width: 40px;
-   height: 40px;
-   margin-right: 15px;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
 `;
 
 const GroupItem = styled(TouchableOpacity)`
@@ -49,33 +49,31 @@ const GroupBlock = styled(View)`
   padding: 0 20px;
 `;
 
-
-const Group = ({ title, items}) => {
-   return (
-      <GroupBlock>
-        <GroupTitle> {title} </GroupTitle>
-        {items.map(item => (
+const Group = ({title, items}) => {
+  return (
+    <GroupBlock>
+      <GroupTitle> {title} </GroupTitle>
+      {items.map(item => (
         <GroupItem>
           <Avatar
             source={{
-              uri:
-                item.user.avatar
+              uri: item.user.avatar,
             }}
           />
-          <View style = {{ flex: 1 }}>
+          <View style={{flex: 1}}>
             <FullName>{item.user.FullName}</FullName>
             <GrayText>{item.diagnosis}</GrayText>
           </View>
           <GroupDate active>{item.time}</GroupDate>
         </GroupItem>
-        ))}
-      </GroupBlock>
-   );
+      ))}
+    </GroupBlock>
+  );
 };
 
 Group.defaultProps = {
-    groupTitle: 'Untitled',
-    items: []
+  groupTitle: 'Untitled',
+  items: [],
 };
 
 export default Group;
