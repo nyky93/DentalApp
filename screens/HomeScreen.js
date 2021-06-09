@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, SectionList, Text, TouchableOpacity} from 'react-native';
-import styled from 'styled-components';                               
+import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import {Appointment, SectionTitle} from '../components';
@@ -113,16 +113,24 @@ const DATA = [
   },
 ];
 
-
-const HomeScreen = () => {
-
+const HomeScreen = ({navigation}) => {
+  navigation.setOptions({
+    headerTitle: () => <HeaderTitle>Пациенты</HeaderTitle>,
+    headerRight: () => (
+      <MenuButton >
+        <Icon name="menu-outline" size={30} />
+      </MenuButton>
+    ),
+  });
   return (
     <Container>
       <SectionList
         showsVerticalScrollIndicator={false}
         sections={DATA}
         keyExtractor={(item, index) => index}
-        renderItem={({item}) => <Appointment {...item} />}
+        renderItem={({item}) => (
+          <Appointment navigate={navigation.navigate} {...item} />
+        )}
         renderSectionHeader={({section: {title}}) => (
           <SectionTitle>{title}</SectionTitle>
         )}
@@ -133,6 +141,18 @@ const HomeScreen = () => {
     </Container>
   );
 };
+
+export default HomeScreen;
+
+const HeaderTitle = styled(Text)`
+  color: #2a86ff;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+const MenuButton = styled(TouchableOpacity)`
+  margin-right: 10px;
+`;
 
 const PlusButton = styled(TouchableOpacity)`
   align-items: center;
@@ -152,8 +172,5 @@ const PlusButton = styled(TouchableOpacity)`
 
 const Container = styled(View)`
   flex: 1;
-  margin-top: 30px;
   padding: 0 20px;
 `;
-
-export default HomeScreen;

@@ -36,23 +36,23 @@ const GroupDate = styled(Text)`
   width: 70px;
   height: 32px;
   text-align: center;
-  line-height: 29px;
+  line-height: 30px;
 `;
 
 const Group = ({user, diagnosis, active, time, navigate}) => {
-  return (     
-        <GroupItem>
-          <Avatar
-            source={{
-              uri: user.avatar,
-            }}
-          />
-          <View style={{flex: 1}}>
-            <FullName>{user.FullName}</FullName>
-            <GrayText>{diagnosis}</GrayText>
-          </View>
-          <GroupDate active={active}>{time}</GroupDate>
-        </GroupItem>
+  return (
+    <GroupItem onPress={navigate.bind(this, 'Patient')}>
+      <Avatar
+        source={{
+          uri: user.avatar,
+        }}
+      />
+      <View style={{flex: 1}}>
+        <FullName>{user.FullName}</FullName>
+        <GrayText>{diagnosis}</GrayText>
+      </View>
+      <GroupDate active={active}>{time}</GroupDate>
+    </GroupItem>
   );
 };
 
