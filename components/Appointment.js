@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
+
+import { GrayText } from '../components';
 
 const GroupItem = styled(TouchableOpacity)`
   align-items: center;
@@ -15,11 +17,6 @@ const Avatar = styled(Image)`
   width: 40px;
   height: 40px;
   margin-right: 15px;
-`;
-
-const GrayText = styled(Text)`
-  font-size: 16px;
-  color: #8b979f;
 `;
 
 const FullName = styled(Text)`
